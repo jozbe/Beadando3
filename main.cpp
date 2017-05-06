@@ -8,7 +8,7 @@ using namespace std;
 using namespace genv;
 const int XX=360;
 const int YY=360;
-void event_loop(vector<ExampleCheckBox*>& widgets)
+void event_loop(vector<Sudoku*>& widgets)
 {
     event ev;
     int focus = -1;
@@ -70,11 +70,11 @@ int main()
 
     gin.timer(20);
     gout.open(XX,YY);
-    vector<ExampleCheckBox*> w;
+    vector<Sudoku*> w;
     for(int i=0; i<9; i++)
         for(int j=0; j<9; j++)
         {
-            ExampleCheckBox * b1 = new ExampleCheckBox(j*40,i*40,40,0,1);
+            Sudoku * b1 = new Sudoku(j*40,i*40,40,0,1);
             w.push_back(b1);
         }
     event_loop(w);

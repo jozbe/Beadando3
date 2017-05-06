@@ -6,14 +6,14 @@ using namespace genv;
 using namespace std;
 const int XX=360;
 const int YY=360;
-ExampleCheckBox::ExampleCheckBox(int x, int y, int meret,int szam,int szin)
+Sudoku::Sudoku(int x, int y, int meret,int szam,int szin)
     : Widget(x,y,meret)
 {
     _szam=szam;
     _szin=szin;
 }
 
-void ExampleCheckBox::draw() const
+void Sudoku::draw() const
 {
     gout << move_to(_x, _y) << color(0,0,0) << box(_meret,_meret);
     if(_szin==2) gout<<color(255,0,0);
@@ -23,7 +23,7 @@ void ExampleCheckBox::draw() const
     gout << move_to(_x+15, _y+25) << text(_szam);
 }
 
-void ExampleCheckBox::handle(event ev)
+void Sudoku::handle(event ev)
 {
 
     if (ev.type==ev_key && _meret<XX-16  && ev.keycode>0 && (ev.keycode>='1' && ev.keycode<='9'))
@@ -39,14 +39,14 @@ void ExampleCheckBox::handle(event ev)
 
 }
 
-bool ExampleCheckBox::egyezes(int aktualis)
+bool Sudoku::egyezes(int aktualis)
 {
     if (_szam==aktualis)
         return true;
     else return false;
 }
 
-void ExampleCheckBox::set__szin(int k)
+void Sudoku::set__szin(int k)
 {
     _szin=k;
 }

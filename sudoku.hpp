@@ -7,11 +7,11 @@
 
 using namespace std;
 
-class ExampleCheckBox : public Widget {
+class Sudoku : public Widget {
 private:
     int _szam, _szin;
 public:
-    ExampleCheckBox(int x, int y, int meret,int szam,int szin);
+    Sudoku(int x, int y, int meret,int szam,int szin);
     virtual void draw() const ;
     virtual void handle(genv::event ev);
     bool egyezes(int akt);
@@ -20,4 +20,4 @@ public:
 };
 
 
-#endif // EXAMPLECHECKBOX_HPP_INCLUDED
+#endif // Sudoku_HPP_INCLUDED
