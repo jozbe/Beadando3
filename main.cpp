@@ -3,11 +3,12 @@
 #include "sudoku.hpp"
 #include <vector>
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 using namespace genv;
-const int XX=360;
-const int YY=360;
+const int XX=380;
+const int YY=380;
 void event_loop(vector<Sudoku*>& widgets)
 {
     event ev;
@@ -32,9 +33,9 @@ void event_loop(vector<Sudoku*>& widgets)
         {
             widgets[focus]->handle(ev);
         }
-        if (ev.keycode>='1' && ev.keycode<='9')
+        if (ev.keycode>='1' && ev.keycode<='9' && focus>-1)
         {
-
+            //SORVIZSGALAT
             int sor=(focus)/9;
             int k=sor*9;
             sor=k+9;
@@ -46,13 +47,14 @@ void event_loop(vector<Sudoku*>& widgets)
 
                 k++;
             }
-            k=focus%9;
+            //OSZLOP VIZSGALAT
+            int j=focus%9;
             int oszlop=80;
-            while(k-1<oszlop && tf==false)
+            while(j-1<oszlop && tf==false)
             {
-                if(k!=focus)
-                    tf=widgets[k]->egyezes(ev.keycode);
-                k+=9;
+                if(j!=focus)
+                    tf=widgets[j]->egyezes(ev.keycode);
+                j+=9;
             }
             if(tf==true)
                 widgets[focus]->set__szin(2);
@@ -71,12 +73,30 @@ int main()
     gin.timer(20);
     gout.open(XX,YY);
     vector<Sudoku*> w;
+    int fg=0;
+    ifstream be;
+    be.open("easy.txt");
+    int beolvas;
+    int szin;
     for(int i=0; i<9; i++)
+    {
+        int viz=0;
+
+        if((i)%3==0)
+            fg+=5;
         for(int j=0; j<9; j++)
         {
-            Sudoku * b1 = new Sudoku(j*40,i*40,40,0,1);
+            if((j)%3==0)
+                viz+=5;
+            be>>beolvas;
+            if (beolvas==0)
+                szin=1;
+            else szin=0;
+            Sudoku * b1 = new Sudoku(j*40+viz,i*40+fg,40,beolvas,szin);
             w.push_back(b1);
         }
+
+    }
     event_loop(w);
     return 0;
 }
