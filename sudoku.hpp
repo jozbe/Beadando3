@@ -16,6 +16,8 @@ public:
     virtual void handle(genv::event ev);
     bool egyezes(int akt);
     void set__szin(int k);
+    int get__szin();
+    int get__szam();
 
 };
 

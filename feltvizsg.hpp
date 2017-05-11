@@ -9,6 +9,6 @@
 
 using namespace std;
 using namespace genv;
- void feltvizsg(int focus,vector<Sudoku*>& widgets,event ev);
+ void feltvizsg(int focus,vector<Sudoku*>& widgets,event ev,bool& tovabb);
 
 #endif // FELTVIZSG_HPP_INCLUDED

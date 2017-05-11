@@ -8,12 +8,12 @@
 using namespace std;
 using namespace genv;
 
-void feltvizsg(int focus,vector<Sudoku*>& widgets,event ev)
+void feltvizsg(int focus,vector<Sudoku*>& widgets,event ev,bool& tovabb)
 {
     {
         int j;
-         bool tf= false;
-       /* //SORVIZSGALAT
+        bool tf= false;
+        //SORVIZSGALAT
         int sor=(focus)/9;
         int k=sor*9;
         sor=k+9;
@@ -32,7 +32,7 @@ void feltvizsg(int focus,vector<Sudoku*>& widgets,event ev)
             if(j!=focus)
                 tf=widgets[j]->egyezes(ev.keycode);
             j+=9;
-        }*/
+        }
 
         //NEGYZET
 
@@ -50,7 +50,7 @@ void feltvizsg(int focus,vector<Sudoku*>& widgets,event ev)
             else if (j<6) kezdo=30;
             else kezdo=33;
         }
-        else if(focus<80)
+        else if(focus<81)
         {
             if(j<3)    kezdo=54;
             else if (j<6) kezdo=57;
@@ -58,28 +58,28 @@ void feltvizsg(int focus,vector<Sudoku*>& widgets,event ev)
         }
         int w=0;
         while(w<3 && tf==false)
-
         {
             int q=0;
             while ( q<3 && tf==false)
             {
                 if(kezdo+q!=focus)
-                                       tf=widgets[kezdo+q]->egyezes(ev.keycode);
-                if(tf==true)
-
-                cout<<q<<" "<<w<<" "<<kezdo+q<<' ';
+                    tf=widgets[kezdo+q]->egyezes(ev.keycode);
                 q++;
             }
-            cout<<endl;
             w++;
-            int szorzo=w*9;
-            kezdo+=szorzo;
+            kezdo+=9;
         }
         if(tf==true)
-
-                widgets[focus]->set__szin(2);
+        {
+            widgets[focus]->set__szin(2);
+            tovabb=false;
+        }
 
         else
+        {
             widgets[focus]->set__szin(1);
+            tovabb=true;
+        }
+
     }
 }
