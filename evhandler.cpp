@@ -41,7 +41,7 @@ void EventHandler::event_loop(vector<Sudoku*>& widgets)
         {
             widgets[focus]->handle(ev);
         }
-         if (ev.keycode>='1' && ev.keycode<='9' && focus>-1 && widgets[focus]->get__szin()!=0)
+         if (((ev.keycode>='1' && ev.keycode<='9')|| ev.keycode==key_backspace) &&  focus>-1 && widgets[focus]->get__szin()!=0)
             feltvizsg(focus,widgets,ev,tovabb);
     }
 }
