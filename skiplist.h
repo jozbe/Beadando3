@@ -23,12 +23,13 @@ private:
 	class Node	{
 	public:
 		int value;
-		std::vector <Node*> next[10];
-		Node(const int& value0) :value(value0) {}
-		};
-	Node *head;
+		std::vector <Node*> next;
+		Node() {};
+		Node(const int& value0) :value(value0) {};
+	};
+	Node *min=new Node();
+	Node *max=new Node();
 	Node *cur;
-	bool random();
 
 };
 
