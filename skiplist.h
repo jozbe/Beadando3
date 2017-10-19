@@ -26,14 +26,22 @@ private:
 		std::vector <Node*> next;
 		Node() {};
 		Node(const int& value0) :value(value0) {};
-		void setptr(Node *ptr0)
+
+		void set_ptr(Node *ptr0)
 		{
 			this->next.push_back(ptr0);
 		}
+
+		void change_ptr(Node *ptr0,int lvl)
+		{
+			this->next[lvl]=ptr0;
+		}
+
 	};
-	Node *min=new Node();
-	Node *max=new Node();
-	Node *cur;
+	Node *min;
+	Node *max;
+
+
 
 };
 
