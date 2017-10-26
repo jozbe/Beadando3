@@ -21,7 +21,7 @@ public:
 	void print();
     size_t size();
 private:
-	class Node	{
+	class Node {
 	public:
 		int value;
 		std::vector <Node*> next;
@@ -39,11 +39,10 @@ private:
 		}
 
 	};
+	void insertbtw(int szint, Node* fresh);
+
 	Node *min;
 	Node *max;
-
-
-
 };
 
 #endif /* SKIPLIST_H_ */
