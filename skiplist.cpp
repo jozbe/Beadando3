@@ -100,21 +100,9 @@ void skiplist::insertbtw(int szint, Node *fresh) {
 		fresh->change_ptr(cur->next[szint], szint);
 		cur->change_ptr(fresh, szint);
 	}
-	//1 elem
-	else if(cur->next[szint]->next[szint]->next[szint] == nullptr){
-		if(cur->next[szint]->value>fresh->value){
-			fresh->change_ptr(cur->next[szint],szint);
-			cur->change_ptr(fresh,szint);
-		}
-		else {
-			fresh->change_ptr(max,szint);
-			cur->next[szint]->change_ptr(fresh,szint);
-		}
-	}
 	// több elem
 	else {
-		while (cur->next[szint]->value < fresh->value and cur->next[szint]->next[szint]->value > fresh->value
-				and cur->next[szint]->next[szint] != nullptr) {
+		while (cur->next[szint]->value < fresh->value and cur->next[szint]->next[szint] != nullptr) {
 			cur = cur->next[szint];
 		}
 	}
