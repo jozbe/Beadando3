@@ -18,6 +18,7 @@ public:
 	void insert(int);
 	void erase(int);
 	bool contains(int);
+	void print();
     size_t size();
 private:
 	class Node	{
