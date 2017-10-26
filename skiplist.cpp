@@ -49,10 +49,7 @@ void skiplist::erase(int k) {
 	Node *cur = min;
 	int lvl = min->next.size() - 1;
 	while (cur->next[lvl]->value < k and cur->next[0]->next[0] != nullptr) {
-		if (cur->next[lvl]->value < k)
 			cur = cur->next[lvl];
-		else
-			lvl--;
 	}
 	if (cur->next[lvl]->value == k) {
 		Node *del = cur->next[lvl];
@@ -66,10 +63,7 @@ bool skiplist::contains(int k) {
 	Node *cur = min;
 	int lvl = min->next.size() - 1;
 	while (cur->next[lvl]->value < k and cur->next[0]->next[0] != nullptr) {
-		if (cur->next[lvl]->value < k)
 			cur = cur->next[lvl];
-		else
-			lvl--;
 	}
 	if (cur->next[lvl]->value == k) {
 
