@@ -26,6 +26,7 @@ skiplist::~skiplist() {
 
 void skiplist::insert(int k) {
 	Node *fresh = new Node(k);
+	Node* cur = min;
 	srand(time(NULL));
 	unsigned int szint = 0;
 	/*unsigned int rnd=1;
@@ -42,7 +43,20 @@ void skiplist::insert(int k) {
 	 insertbtw(szint,fresh);
 	 }*/
 	fresh->set_ptr(max);
-	insertbtw(szint, fresh);
+	//üres
+		if (cur->next[szint]->next[szint] == nullptr) {
+			fresh->change_ptr(cur->next[szint], szint);
+			cur->change_ptr(fresh, szint);
+		}
+		// több elem
+		else {
+			while (cur->next[szint]->value < fresh->value and cur->next[szint]->next[szint] != nullptr) {
+				cur = cur->next[szint];
+			}
+		}
+		fresh->change_ptr(cur->next[szint], szint);
+		cur->change_ptr(fresh, szint);
+	//insertbtw(szint, fresh);
 
 }
 
