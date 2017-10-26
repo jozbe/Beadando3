@@ -23,6 +23,7 @@ skiplist::~skiplist() {
 
 void skiplist::insert(int k) {
 	Node *cur = min;
+
 	int lvl = min->next.size() - 1;
 
 		//URES SKIPLIST ESETEN
@@ -33,12 +34,8 @@ void skiplist::insert(int k) {
 
 		//MAR VAN ELEM A LISTABAN
 	} else if (contains(k)==false) {
-		while (cur->next[lvl]->value < k and cur->next[0]->next[0] != nullptr
-				and lvl >= 0) {
-			if (cur->next[lvl]->value < k)
-				cur = cur->next[lvl];
-			else
-				lvl--;
+		while (cur->next[lvl]->value < k and cur->next[0]->next[0] != nullptr and lvl >= 0) {
+			cur=cur->next[lvl];
 		}
 		Node *fresh = new Node(k);
 		fresh->set_ptr(cur->next[0]);
